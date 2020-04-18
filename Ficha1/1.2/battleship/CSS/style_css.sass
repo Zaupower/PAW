@@ -1,0 +1,35 @@
+$backgroundColor: #ddd
+$titleColor: blue
+
+body
+	margin: 0
+	padding: 0
+	background-color: $backgroundColor
+
+.board
+	display: grid
+	grid-template-columns: repeat(10, 1fr)
+
+.block
+	position: relative
+	width: 100%
+	
+
+	&.odd
+		background-color: gray
+
+	&::before
+		position: relative
+		content: ''
+		display: block
+		// 16x9
+		padding-top: 100%
+
+	> *
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+
+    

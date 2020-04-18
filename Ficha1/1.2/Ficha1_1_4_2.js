@@ -27,12 +27,30 @@ function updateObject(contact, newName, newContact){
     console.log(index)
     contactsList[index].name = newName
     contactsList[index].number = newContact
-    
 }
+
+function findByAge(age){
+    var tmpArr = []
+
+    for (contact of contactsList){
+        if (contact.name === age){
+            tmpArr.push(contact)
+        }
+    } 
+    return tmpArr
+}
+ 
+var tmpArr = []
+
 var conc = createContact('John', 3939399)
+addContact(conc)
+addContact(conc)
 addContact(conc)
 console.log(contactsList)
 updateObject(conc, 'marcelo', 99999)
 console.log(contactsList)
+tmpArr = findByAge("marcelo")
+console.log("Achado: "+JSON.stringify(tmpArr))
+
 removeContact(conc)
 console.log(contactsList)

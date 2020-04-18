@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ddd;
+}
+
+.board {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[10];
+      grid-template-columns: repeat(10, 1fr);
+}
+
+.block {
+  position: relative;
+  width: 100%;
+}
+
+.block.odd {
+  background-color: gray;
+}
+
+.block::before {
+  position: relative;
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.block > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+/*# sourceMappingURL=style_css.css.map */

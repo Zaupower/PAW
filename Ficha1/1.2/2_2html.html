@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @media (max-width: 480px) {
+            /* CSS for phones */
+
+                        table, th, td {
+                    border: 1px solid green;
+                    border-collapse: collapse;
+                    
+                    }
+                    th, td {
+                        
+                        color: chartreuse;
+                        padding-right: 50px;
+                        text-align: center;
+                        margin-top: initial;
+                    }
+                    th {
+                        text-align: right;;
+                    }
+                        
+            }
+            @media (max-width: 720px) {
+            /* CSS for tablets */
+                        table, th, td {
+                    border: 1px solid blue;
+                    border-collapse: collapse;
+                    
+                    }
+                    th, td ,tr{
+                    
+                        color: brown;
+                        padding-right: 50px;
+                        text-align: top;
+                        margin-top: initial;
+                    }
+                    th {
+                        text-align: left;
+                    }
+                        }
+     
+        </style>
+        </head>
+<body>
+
+    <table contenteditable='true'>
+    
+        <thead>
+            <tr>
+                <th >Grupo</th>
+                <th>Nome</th>
+                <th>Contactos</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr>
+            <td rowspan="2">Grupo1 <br> </td>
+            <td>Elemento 1 </td>
+            <td>900000010</td>
+            <td>220000001</td>  
+        </tr>
+        <tr >
+            <td>Elemento 2 </td>
+            <td colspan="2">900000001</td>
+        </tr>
+        <tr>
+            <td>Grupo 2</td>
+            <td>Elemento 3 </td>
+            <td>900001001</td>
+            <td>900000101</td> 
+        </tr>
+        <tr>
+            <td>Grupo 3     </td>
+            <td colspan="3", align="center">No data </td>  
+        </tr>
+    
+    </table>
+</body>
+</html>

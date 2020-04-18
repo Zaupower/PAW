@@ -1,0 +1,62 @@
+<html>
+   <style>
+
+    .column{
+        background-color: lightgray;
+        text-align: left;
+        /*faz wrap do conteudo do div--> display: inline-block;*/
+        display: inline-block;
+        border: 1px solid red;
+        /*borda interior*/
+        padding: 10px;
+    }
+    .column li{
+        
+    padding: 0;
+	display: block;
+    line-height-step: 1;
+	list-style: none;
+	margin: 10px 0 0 0;
+    }
+    .column form{
+        padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 0 0 0; 
+    }
+    .button{
+        border-radius: 2px;
+        margin: 4px 2px;
+        padding: 10px 50px;
+        border: none;
+        background-color: green;
+    }
+    .in{
+        text-align: center;
+    }
+
+   </style>
+   <div class="column">
+   <form action="/action_page.php">
+
+    <label for="fname">First name <br></label>
+    <input type="text" id="fname" name="fname"><br><br>
+    <label for="lname">Last name <br></label>
+    <input type="text" id="lname" name="lname"><br>
+    <li>
+        <label>Country <br></label>
+        <select name="field4" class="field-select">
+        <option value="Advertise">Portugal</option>
+        <option value="Partnership">France</option>
+        <option value="General Question">Germany</option>
+        </select>
+    </li>
+
+    <br>
+ 
+    <div class="in">
+        <input  type="submit"  class="button" value="Submit">
+    </div>
+  </form>
+</div>
+</html>
