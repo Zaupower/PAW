@@ -1,0 +1,26 @@
+//mostrar bases de dados
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+//iniciar uma nova base de dados chamda nodekb
+> use nodekb
+switched to db nodekb
+
+//criar colecao chama articles
+> db.createCollection('articles')
+{ "ok" : 1 }
+
+//mostrar colecoes dentro da bd "nodekb"
+> show collections
+articles
+
+//adicionar artigo
+> db.articles.insert({title:"Article 1",author:"Marcelo", body:"This is article one"});
+WriteResult({ "nInserted" : 1 })
+
+//procurar artigos dentro da colecao "articles"
+> db.articles.find()
+{ "_id" : ObjectId("5e9efb354930391e28a5d250"), "title" : "Article 1", "author" : "Marcelo", "body" : "This is article one" }
+>
