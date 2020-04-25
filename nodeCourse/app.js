@@ -2,14 +2,14 @@
 //instalar com npm 
 //ex: npm install --save express
 const express = require('express');
-const path = require('path')
+const path = require('path');
 
 //adicionar mongoose
 //Para Connectar Servidor Node Com Mongo_db DB
 const mongoose = require('mongoose');
 
 //Body-Parser
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 //conectar a base de dados
 mongoose.connect('mongodb://localhost/nodekb', { useNewUrlParser: true, useUnifiedTopology: true  })
@@ -30,13 +30,13 @@ app.set('view engine', 'pug');
 
 //Body-Parser Midleware 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
-
-//Home Route
+app.use(express.static(path.join(__dirname, 'public')));
+//Home Route ou set public folder
 app.get('/', function(req, res){
     Article.find({}, function(err, articles){
         if(err){
