@@ -35,19 +35,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-
 //Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 //-------------------------------------ROUTES-------------------------------------//
 
-
 //------------TEST ROUTE------------//
 
 app.get('/test', function (req, res) {
-    res.render('test', {
-
-    });
+    res.render('test', {});
 });
 
 //------------TEST ROUTE------------//
@@ -68,7 +64,6 @@ app.get('/', function (req, res) {
                 articles: articles
             });
         }
-
     });
 });
 
@@ -82,8 +77,6 @@ app.get('/articles/add', function (req, res) {
     res.render('add_article', {
         title: 'Articles'
     });
-
-
 });
 
 //Add Submit POST route
@@ -115,7 +108,6 @@ app.get('/article/:id', function (req, res) {
     });
 });
 
-
 //Load Edit Form
 app.get('/article/edit/:id', function (req, res) {
     Article.findById(req.params.id, function (err, article) {
@@ -132,6 +124,7 @@ app.post('/articles/edit/:id', function (req, res) {
       igualar o artigo editado que vem de edit_article.pug neste 
       caso req
     */
+
     //objeto vazio
     let article = {};
 
@@ -156,9 +149,7 @@ app.post('/articles/edit/:id', function (req, res) {
     });
 });
 
-
 //Delete Article by js script in public/js/main.js
-
 app.delete('/article/:id', function (req, res) {
     let query = { _id: req.params.id };
     Article.remove(query, function (err) {
@@ -174,4 +165,4 @@ app.delete('/article/:id', function (req, res) {
 //informacao do inicio do servidor node
 app.listen(3000, function () {
     console.log('Server started on port 3000');
-})
+});
