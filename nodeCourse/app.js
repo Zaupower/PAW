@@ -12,9 +12,9 @@ const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 //conectar a base de dados
-mongoose.connect('mongodb://localhost/nodekb', { useNewUrlParser: true, useUnifiedTopology: true  })
-.then(() => console.log("Mongodb connected")) //Check Connection nodekb
-.catch(err => console.log(err)); //Check for DB errors
+mongoose.connect('mongodb://localhost/nodekb', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Mongodb connected")) //Check Connection nodekb
+    .catch(err => console.log(err)); //Check for DB errors
 let db = mongoose.connection;
 
 //init App
@@ -44,8 +44,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //------------TEST ROUTE------------//
 
-app.get('/test', function(req, res){
-    res.render('test',{
+app.get('/test', function (req, res) {
+    res.render('test', {
 
     });
 });
@@ -53,11 +53,11 @@ app.get('/test', function(req, res){
 //------------TEST ROUTE------------//
 
 //Home Route ou set public folder
-app.get('/', function(req, res){
-    Article.find({}, function(err, articles){
-        if(err){
+app.get('/', function (req, res) {
+    Article.find({}, function (err, articles) {
+        if (err) {
             console.log(err);
-        }else{
+        } else {
 
             // enviar para o browser
             //render refere-se ao pug
@@ -68,26 +68,26 @@ app.get('/', function(req, res){
                 articles: articles
             });
         }
-        
+
     });
 });
 
 //Add route(/articles/add)
 //articles/add refere se ao dns que se deve utilizar para
 //aceder ao html ou pug "add_articles"
-app.get('/articles/add', function(req, res){
+app.get('/articles/add', function (req, res) {
 
     console.log('hello');
     //add_article referese ao nome do ficheiro html que se quer abrir
     res.render('add_article', {
-        title:'Articles'
+        title: 'Articles'
     });
-    
+
 
 });
 
 //Add Submit POST route
-app.post('/articles/add', function(req, res){
+app.post('/articles/add', function (req, res) {
 
     let article = new Article();
     article.title = req.body.title;
@@ -95,11 +95,11 @@ app.post('/articles/add', function(req, res){
     article.author = req.body.author;
     console.log(article.author);
 
-    article.save(function(err){
-        if(err){
+    article.save(function (err) {
+        if (err) {
             console.log(err);
             return;
-        }else{
+        } else {
 
             res.redirect('/');
         }
@@ -107,50 +107,50 @@ app.post('/articles/add', function(req, res){
 });
 
 //Get Single Article information link route
-app.get('/article/:id', function(req, res){
-    Article.findById(req.params.id, function(err, article){
+app.get('/article/:id', function (req, res) {
+    Article.findById(req.params.id, function (err, article) {
         res.render('article', {
-            article:article
+            article: article
         });
     });
 });
 
 
 //Load Edit Form
-app.get('/article/edit/:id', function(req, res){
-    Article.findById(req.params.id, function(err, article){
+app.get('/article/edit/:id', function (req, res) {
+    Article.findById(req.params.id, function (err, article) {
         res.render('edit_article', {
-            title:'Edit Article',
-            article:article
+            title: 'Edit Article',
+            article: article
         });
     });
 });
 
 //Edit Submit POST route
-app.post('/articles/edit/:id', function(req, res){
-/*Para editar o artigo cria-se um objecto vazio para onde vai
-  igualar o artigo editado que vem de edit_article.pug neste 
-  caso req
-*/
-//objeto vazio
+app.post('/articles/edit/:id', function (req, res) {
+    /*Para editar o artigo cria-se um objecto vazio para onde vai
+      igualar o artigo editado que vem de edit_article.pug neste 
+      caso req
+    */
+    //objeto vazio
     let article = {};
 
     article.title = req.body.title;
     article.body = req.body.body;
     article.author = req.body.author;
 
-//query ee o id do objeto
-    let query = {_id:req.params.id};
+    //query ee o id do objeto
+    let query = { _id: req.params.id };
 
-/*Em Article classe geral e adicionado o id (query)e os
-valores novos do artigo(article) e e utilizada a funcao
-Article.update
-*/
-    Article.updateOne(query, article, function(err){
-        if(err){
+    /*Em Article classe geral e adicionado o id (query)e os
+    valores novos do artigo(article) e e utilizada a funcao
+    Article.update
+    */
+    Article.updateOne(query, article, function (err) {
+        if (err) {
             console.log(err);
             return;
-        }else{
+        } else {
             res.redirect('/');
         }
     });
@@ -159,10 +159,10 @@ Article.update
 
 //Delete Article by js script in public/js/main.js
 
-app.delete('/article/:id', function(req, res){
-    let query = {_id:req.params.id};
-    Article.remove(query, function(err){
-        if(err){
+app.delete('/article/:id', function (req, res) {
+    let query = { _id: req.params.id };
+    Article.remove(query, function (err) {
+        if (err) {
             console.log(err);
         }
         res.send('Success');
@@ -172,6 +172,6 @@ app.delete('/article/:id', function(req, res){
 //-------------------------------------ROUTES-------------------------------------//
 
 //informacao do inicio do servidor node
-app.listen(3000, function(){
+app.listen(3000, function () {
     console.log('Server started on port 3000');
 })
